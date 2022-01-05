@@ -183,7 +183,9 @@
                         <outlet property="backButton" destination="zkM-lh-gpC" id="eFX-hk-rFP"/>
                         <outlet property="headerView" destination="cud-Va-wc1" id="fNf-cE-GoD"/>
                         <outlet property="pokemonBaselineView" destination="Kx1-Na-ASW" id="kGS-aX-2mT"/>
+                        <outlet property="pokemonDescriptionLabel" destination="64N-84-2Sg" id="u5H-WV-Gcb"/>
                         <outlet property="pokemonImageView" destination="Vcw-Gx-V89" id="Jyv-hM-eHA"/>
+                        <outlet property="pokemonLabel" destination="cRI-UZ-ivc" id="tTR-LU-cYS"/>
                         <outlet property="pokemonTypeCollectionView" destination="A5X-7c-UYp" id="Mp2-4y-FB2"/>
                     </connections>
                 </viewController>

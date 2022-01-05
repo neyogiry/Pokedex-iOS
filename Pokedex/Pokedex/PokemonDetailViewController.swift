@@ -17,7 +17,11 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var pokemonBaselineView: UIView!
     @IBOutlet weak var pokemonImageView: UIImageView!
+    @IBOutlet weak var pokemonLabel: UILabel!
     @IBOutlet weak var pokemonTypeCollectionView: UICollectionView!
+    @IBOutlet weak var pokemonDescriptionLabel: UILabel!
+    
+    var pokemon: Pokemon?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +43,10 @@ class PokemonDetailViewController: UIViewController {
         self.pokemonTypeCollectionView.backgroundColor = pokemonInformationBackgroundColor
         
         self.pokemonBaselineView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
+        
+        self.pokemonLabel.text = pokemon?.name ?? ""
+        self.pokemonImageView.load(ImageHelper.pokemonImageUrl(pokemon?.url ?? ""))
+        self.pokemonDescriptionLabel.isHidden = true
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {

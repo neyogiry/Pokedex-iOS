@@ -6,17 +6,19 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     
-    private let pokemonList = Array(0...10)
+    private var pokemonList: [Pokemon] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupCollectionView()
+        getPokedex()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,12 +40,25 @@ class ViewController: UIViewController {
         pokemonCollectionView.register(UINib(nibName: "PokemonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "pokemonCell")
     }
     
+    private func getPokedex() {
+        PokemonRepository.shared.all { (pokemonList) in
+            
+            DispatchQueue.main.async {
+                self.pokemonList.insert(contentsOf: pokemonList.results, at: 0)
+                self.pokemonCollectionView.reloadData()
+            }
+            
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "pokemonDetailVC" {
-//            if let pdController = segue.destination as? PokemonDetailViewController {
-//
-//            }
-//        }
+        if segue.identifier == "pokemonDetailVC" {
+            if let pdController = segue.destination as? PokemonDetailViewController {
+                if let index = pokemonCollectionView.indexPathsForSelectedItems?.first {
+                    pdController.pokemon = pokemonList[index.row]
+                }
+            }
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -61,6 +76,8 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pokemonCell", for: indexPath) as? PokemonCollectionViewCell
+        cell?.pokemonName.text = pokemonList[indexPath.row].name
+        cell?.pokemonImage.load(ImageHelper.pokemonImageUrl(pokemonList[indexPath.row].url ?? ""))
         return cell!
     }
     
@@ -76,17 +93,7 @@ extension ViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ViewController: UICollectionViewDelegateFlowLayout {
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width1 = UIScreen.main.bounds.width
-        let width2 = pokemonCollectionView.bounds.width
-        let width3 = pokemonCollectionView.frame.width
-        let width4 = collectionView.frame.size.width
-        
-        let height1 = UIScreen.main.bounds.height
-        let height2 = pokemonCollectionView.bounds.height
-        let height3 = pokemonCollectionView.frame.height
-        let height4 = collectionView.frame.size.height
-        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {        
         let collectionWidth = collectionView.frame.width
         let collectionHeight = collectionView.frame.height
         let padding: CGFloat = 10
