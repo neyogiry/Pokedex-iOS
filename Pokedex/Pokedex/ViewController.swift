@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     
+    private let itemsPerRow: CGFloat = 2
+    
     private var pokemonList: [Pokemon] = []
     
     override func viewDidLoad() {
@@ -95,12 +97,22 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {        
         let collectionWidth = collectionView.frame.width
-        let collectionHeight = collectionView.frame.height
-        let padding: CGFloat = 10
-        let rowWidth = collectionWidth - padding
-        let myCellWidth = rowWidth / 2
+        let collectionHeight = collectionView.frame.height        
+        let paddingSpace = PokemonCollectionViewCell.sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = collectionWidth - paddingSpace
+        let myCellWidth = availableWidth / itemsPerRow
         let myCellHeight = collectionHeight / 3.5
+            
         return CGSize(width: myCellWidth, height: myCellHeight)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return PokemonCollectionViewCell.sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return PokemonCollectionViewCell.sectionInsets.left
+    }
+
 
 }
