@@ -31,7 +31,6 @@ class PokemonDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationController()
-        changeStatusBarColor(backgroundColor: .systemTeal)
     }
     
     private func setupNavigationController() {
@@ -39,13 +38,21 @@ class PokemonDetailViewController: UIViewController {
     }
     
     private func setup() {
+        self.changeStatusBarColor(backgroundColor: pokemonInformationBackgroundColor)
+        self.headerView.backgroundColor = pokemonInformationBackgroundColor
         self.pokemonBaselineView.backgroundColor = pokemonInformationBackgroundColor
         self.pokemonTypeCollectionView.backgroundColor = pokemonInformationBackgroundColor
         
         self.pokemonBaselineView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
         
         self.pokemonLabel.text = pokemon?.name ?? ""
-        self.pokemonImageView.load(ImageHelper.pokemonImageUrl(pokemon?.url ?? ""))
+        self.pokemonImageView.image = nil
+        self.pokemonImageView.load(ImageHelper.pokemonImageUrl(pokemon?.url ?? "")) { image in
+            if let color = image?.averageColor {
+                self.changeStatusBarColor(backgroundColor: color)
+                self.headerView.backgroundColor = color
+            }
+        }
         self.pokemonDescriptionLabel.isHidden = true
     }
     

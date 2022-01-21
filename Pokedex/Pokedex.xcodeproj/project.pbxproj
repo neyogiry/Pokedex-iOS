@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E178A32279A328100901EAF /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E178A31279A328100901EAF /* UIImageExtension.swift */; };
 		1E1CC0452785F19000687D7C /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1CC0442785F19000687D7C /* ImageHelper.swift */; };
 		1E1CC0472785F2BA00687D7C /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1CC0462785F2BA00687D7C /* UIImageViewExtension.swift */; };
 		1E2619CF2783606200F35D12 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2619CE2783606200F35D12 /* UIViewControllerExtension.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E178A31279A328100901EAF /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		1E1CC0442785F19000687D7C /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		1E1CC0462785F2BA00687D7C /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		1E2619CE2783606200F35D12 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				1E2619D0278360D800F35D12 /* UIViewExtension.swift */,
 				1E2619CE2783606200F35D12 /* UIViewControllerExtension.swift */,
 				1E1CC0462785F2BA00687D7C /* UIImageViewExtension.swift */,
+				1E178A31279A328100901EAF /* UIImageExtension.swift */,
 				1E2619D8278393E300F35D12 /* Constants.swift */,
 				1E1CC0442785F19000687D7C /* ImageHelper.swift */,
 			);
@@ -280,6 +283,7 @@
 				1E2619DB2783983300F35D12 /* PokemonResponse.swift in Sources */,
 				1E2619D1278360D800F35D12 /* UIViewExtension.swift in Sources */,
 				1E8C7F69276807C700F636F8 /* PokemonCollectionViewCell.swift in Sources */,
+				1E178A32279A328100901EAF /* UIImageExtension.swift in Sources */,
 				1E2619D72783925000F35D12 /* PokemonDataSource.swift in Sources */,
 				1EFF8EDF2767BAD20024CC94 /* SceneDelegate.swift in Sources */,
 				1E1CC0472785F2BA00687D7C /* UIImageViewExtension.swift in Sources */,

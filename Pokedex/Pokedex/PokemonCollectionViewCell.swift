@@ -23,6 +23,7 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        pokemonImage.image = nil
         backgroundColor = .white
         layer.borderColor = UIColor.gray.cgColor
         layer.borderWidth = 1.0

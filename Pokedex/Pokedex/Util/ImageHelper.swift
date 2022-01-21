@@ -5,7 +5,7 @@
 //  Created by neyogiry on 5/01/22.
 //
 
-import Foundation
+import UIKit
 
 class ImageHelper {
     

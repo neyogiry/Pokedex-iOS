@@ -79,7 +79,9 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pokemonCell", for: indexPath) as? PokemonCollectionViewCell
         cell?.pokemonName.text = pokemonList[indexPath.row].name
-        cell?.pokemonImage.load(ImageHelper.pokemonImageUrl(pokemonList[indexPath.row].url ?? ""))
+        cell?.pokemonImage.load(ImageHelper.pokemonImageUrl(pokemonList[indexPath.row].url ?? "")) { image in
+            cell?.backgroundColor = image?.averageColor
+        }
         return cell!
     }
     
