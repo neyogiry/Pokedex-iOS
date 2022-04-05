@@ -8,7 +8,7 @@
 import UIKit
 import AlamofireImage
 
-class ViewController: UIViewController {
+class PokedexViewController: UIViewController {
 
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - UICollectionViewDataSource
-extension ViewController: UICollectionViewDataSource {
+extension PokedexViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pokemonList.count
@@ -87,15 +87,15 @@ extension ViewController: UICollectionViewDataSource {
     
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-extension ViewController: UICollectionViewDelegate {
+// MARK: - UICollectionViewDelegate
+extension PokedexViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "pokemonDetailVC", sender: self)
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension PokedexViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {        
         let collectionWidth = collectionView.frame.width

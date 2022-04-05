@@ -25,6 +25,21 @@ final class PokemonRepository: PokemonDataSource {
                     success(result)
                 }
             }
+    
+    }
+    
+    func detail(
+        url: String,
+        success: @escaping (_ response: PokemonDetailResponse) -> Void
+    ) {
+        
+        AF
+            .request(url)
+            .responseDecodable(of: PokemonDetailResponse.self) { (response) in
+                if let result = response.value {
+                    success(result)
+                }
+            }
         
     }
     
