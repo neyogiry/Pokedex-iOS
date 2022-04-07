@@ -12,6 +12,8 @@ class PokemonDetailViewController: UIViewController {
     static let pokemonBaselineHeight = CGFloat(50)
     
     private let pokemonInformationBackgroundColor: UIColor = .white
+    private let cellWidth = 85.0
+    private let cellHeight = 36.5
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var pokemonOrder: UILabel!
@@ -20,13 +22,11 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var pokemonImageView: UIImageView!
     @IBOutlet weak var pokemonLabel: UILabel!
     @IBOutlet weak var pokemonTypeCollectionView: UICollectionView!
-    @IBOutlet weak var pokemonDescriptionLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
     
     var pokemon: Pokemon?
     var pokemonDetail: PokemonDetailResponse?
-    
-    let cellWidth = 85.0
-    let cellHeight = 36.5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,6 @@ class PokemonDetailViewController: UIViewController {
                 self.headerView.backgroundColor = color
             }
         }
-        self.pokemonDescriptionLabel.isHidden = true
     }
     
     private func getDetails() {
@@ -80,6 +79,8 @@ class PokemonDetailViewController: UIViewController {
         if let pokemon = pokemonDetail {
             pokemonOrder.text = String(pokemon.order)
             setupPokemonTypesCollectionView()
+            self.weightLabel.text = String(format: "%.1f Kg", Double(pokemon.weight)/Double(10))
+            self.heightLabel.text = String(format: "%.1f m", Double(pokemon.height)/Double(10))
         }
     }
     
