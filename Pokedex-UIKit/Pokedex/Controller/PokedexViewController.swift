@@ -43,10 +43,10 @@ class PokedexViewController: UIViewController {
     }
     
     private func getPokedex() {
-        PokemonRepository.shared.all { (pokemonList) in
+        PokemonRepository.shared.all { (pokedex) in
             
             DispatchQueue.main.async {
-                self.pokemonList.insert(contentsOf: pokemonList.results, at: 0)
+                self.pokemonList.insert(contentsOf: pokedex.pokemon, at: 0)
                 self.pokemonCollectionView.reloadData()
             }
             
@@ -79,7 +79,7 @@ extension PokedexViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pokemonCell", for: indexPath) as? PokemonCollectionViewCell
         cell?.pokemonName.text = pokemonList[indexPath.row].name
-        cell?.pokemonImage.load(ImageHelper.pokemonImageUrl(pokemonList[indexPath.row].url ?? "")) { image in
+        cell?.pokemonImage.load(ImageHelper.pokemonImageUrl(pokemonList[indexPath.row].url)) { image in
             cell?.backgroundColor = image?.averageColor
         }
         return cell!

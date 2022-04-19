@@ -9,10 +9,10 @@ import Foundation
 
 protocol PokemonDataSource {
     func all(
-        success: @escaping (_ response: PokemonResponse) -> Void
+        success: @escaping (_ response: Pokedex) -> Void
     )
     func detail(
         url: String,
-        success: @escaping (_ response: PokemonDetailResponse) -> Void
+        success: @escaping (_ response: PokemonDetail) -> Void
     )
 }

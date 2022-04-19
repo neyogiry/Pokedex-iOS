@@ -14,15 +14,15 @@ struct PokemonDetailResponse: Decodable {
     let name: String
     let height: Int
     let weight: Int
-    let types: [PokemonType]
+    let types: [PokemonTypeResponse]
 }
 
-struct PokemonType: Decodable {
+struct PokemonTypeResponse: Decodable {
     let slot: Int
-    let type: PokemonTypeDetail
+    let type: PokemonTypeDetailResponse
 }
 
-struct PokemonTypeDetail: Decodable {
+struct PokemonTypeDetailResponse: Decodable {
     let name: String
     let url: String
 }

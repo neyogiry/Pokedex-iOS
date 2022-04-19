@@ -26,7 +26,7 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var heightLabel: UILabel!
     
     var pokemon: Pokemon?
-    var pokemonDetail: PokemonDetailResponse?
+    var pokemonDetail: PokemonDetail?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +52,7 @@ class PokemonDetailViewController: UIViewController {
         self.pokemonBaselineView.roundCorners(corners: [.topLeft, .topRight], radius: 30)
         
         self.pokemonOrder.text = ""
-        self.pokemonLabel.text = pokemon?.name ?? ""
+        self.pokemonLabel.text = pokemon?.name
         self.pokemonImageView.image = nil
         self.pokemonImageView.load(ImageHelper.pokemonImageUrl(pokemon?.url ?? "")) { image in
             if let color = image?.averageColor {
@@ -77,7 +77,6 @@ class PokemonDetailViewController: UIViewController {
     
     private func loadData() {
         if let pokemon = pokemonDetail {
-            pokemonOrder.text = String(pokemon.order)
             setupPokemonTypesCollectionView()
             self.weightLabel.text = String(format: "%.1f Kg", Double(pokemon.weight)/Double(10))
             self.heightLabel.text = String(format: "%.1f m", Double(pokemon.height)/Double(10))

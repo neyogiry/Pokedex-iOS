@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct PokemonResponse: Decodable {
+struct PokedexResponse: Decodable {
     let count: Int?
     let next: String?
-    let results: [Pokemon]
+    let results: [PokemonResponse]
 }
 
 
-struct Pokemon: Decodable {
+struct PokemonResponse: Decodable {
     let name: String?
     let url: String?
 }
