@@ -25,6 +25,8 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
     
+    private let presenter = PokemonDetailPresenter()
+    
     var pokemon: Pokemon?
     var pokemonDetail: PokemonDetail?
     
@@ -44,6 +46,8 @@ class PokemonDetailViewController: UIViewController {
     }
     
     private func setup() {
+        self.presenter.delegate = self
+        
         self.changeStatusBarColor(backgroundColor: pokemonInformationBackgroundColor)
         self.headerView.backgroundColor = pokemonInformationBackgroundColor
         self.pokemonBaselineView.backgroundColor = pokemonInformationBackgroundColor
@@ -64,14 +68,7 @@ class PokemonDetailViewController: UIViewController {
     
     private func getDetails() {
         if let url = pokemon?.url {
-            PokemonRepository.shared.detail(url: url) { (detail) in
-                
-                DispatchQueue.main.async {
-                    self.pokemonDetail = detail
-                    self.loadData()
-                }
-                
-            }
+            presenter.fetchPokemonDetail(url: url)
         }
     }
     
@@ -135,5 +132,22 @@ extension PokemonDetailViewController: UICollectionViewDelegateFlowLayout {
             height: self.cellHeight
         )
     }
+    
+}
+
+// MARK: - PokemonDetailPresenterDelegate
+extension PokemonDetailViewController: PokemonDetailPresenterDelegate {
+    
+    func didGetPokemonDetail(pokemon: PokemonDetail) {
+        DispatchQueue.main.async {
+            self.pokemonDetail = pokemon
+            self.loadData()
+        }
+    }
+    
+    func didFailWithError(error: String) {
+        print(error)
+    }
+    
     
 }

@@ -12,6 +12,8 @@ class PokedexViewController: UIViewController {
 
     @IBOutlet weak var pokemonCollectionView: UICollectionView!
     
+    private let presenter = PokedexPresenter()
+    
     private let itemsPerRow: CGFloat = 2
     
     private var pokemonList: [Pokemon] = []
@@ -19,6 +21,7 @@ class PokedexViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presenter.delegate = self
         setupCollectionView()
         getPokedex()
     }
@@ -43,14 +46,7 @@ class PokedexViewController: UIViewController {
     }
     
     private func getPokedex() {
-        PokemonRepository.shared.all { (pokedex) in
-            
-            DispatchQueue.main.async {
-                self.pokemonList.insert(contentsOf: pokedex.pokemon, at: 0)
-                self.pokemonCollectionView.reloadData()
-            }
-            
-        }
+        presenter.fetchPokedex()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -116,5 +112,21 @@ extension PokedexViewController: UICollectionViewDelegateFlowLayout {
         return PokemonCollectionViewCell.sectionInsets.left
     }
 
+}
 
+// MARK: - PokedexPresenterDelegate
+extension PokedexViewController: PokedexPresenterDelegate {
+    
+    func didGetPokedex(pokedex: Pokedex) {
+        DispatchQueue.main.async {
+            self.pokemonList.insert(contentsOf: pokedex.pokemon, at: 0)
+            self.pokemonCollectionView.reloadData()
+        }
+    }
+    
+    func didFailWithError(error: Error) {
+        print(error)
+    }
+    
+    
 }
