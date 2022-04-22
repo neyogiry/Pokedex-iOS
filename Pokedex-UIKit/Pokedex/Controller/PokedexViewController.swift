@@ -124,7 +124,7 @@ extension PokedexViewController: PokedexPresenterDelegate {
         }
     }
     
-    func didFailWithError(error: Error) {
+    func didFailWithError(error: String) {
         print(error)
     }
     

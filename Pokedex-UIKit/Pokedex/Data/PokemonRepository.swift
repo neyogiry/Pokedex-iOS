@@ -13,7 +13,8 @@ final class PokemonRepository: PokemonDataSource {
     static let shared = PokemonRepository()
     
     func all(
-        success: @escaping (_ response: Pokedex) -> Void
+        success: @escaping (_ pokedex: Pokedex) -> Void,
+        failure: @escaping (_ error: String) -> Void
     ) {
         
         let url = "\(Constants.baseUrl)\(Constants.all)"
@@ -21,6 +22,10 @@ final class PokemonRepository: PokemonDataSource {
         AF
             .request(url)
             .responseDecodable(of: PokedexResponse.self) { (response) in
+                if let error = response.error {
+                    failure(error.errorDescription ?? "")
+                    return
+                }
                 if let pokedexResponse = response.value {
                     success(pokedexResponse.asDomain())
                 }
@@ -30,12 +35,17 @@ final class PokemonRepository: PokemonDataSource {
     
     func detail(
         url: String,
-        success: @escaping (_ response: PokemonDetail) -> Void
+        success: @escaping (_ pokemon: PokemonDetail) -> Void,
+        failure: @escaping (_ error: String) -> Void
     ) {
         
         AF
             .request(url)
             .responseDecodable(of: PokemonDetailResponse.self) { (response) in
+                if let error = response.error {
+                    failure(error.errorDescription ?? "")
+                    return
+                }
                 if let pokemonDetailResponse = response.value {
                     success(pokemonDetailResponse.asDomain())
                 }

@@ -17,8 +17,10 @@ class PokemonDetailPresenter {
     var delegate: PokemonDetailPresenterDelegate?
     
     func fetchPokemonDetail(url: String) {
-        PokemonRepository.shared.detail(url: url) { (pokemon) in
+        PokemonRepository.shared.detail(url: url) { pokemon in
             self.delegate?.didGetPokemonDetail(pokemon: pokemon)
+        } failure: { error in
+            self.delegate?.didFailWithError(error: error)
         }
     }
     
