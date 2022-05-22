@@ -12,10 +12,10 @@
 <img src="/readme/pokedex_main.png" width="320"/>
 </p>
   
-## Branches
+## Samples
 Different ways of developing the same application. You can look at the different branches.
 
-- [UIKit](https://github.com/neyogiry/Pokedex-iOS/tree/storyboard). The UIKit framework provides the required infrastructure for your iOS or tvOS apps. 
+- [UIKit](https://github.com/neyogiry/Pokedex-iOS/tree/main/Pokedex-UIKit). The UIKit framework provides the required infrastructure for your iOS or tvOS apps. 
 
 ### Status: 🚧 In progress
 Pokedex is still in under development, and some features are not yet implemented.
