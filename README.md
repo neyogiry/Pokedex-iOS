@@ -15,6 +15,7 @@
 ## Samples
 Different ways of developing the same application. You can look at the different branches.
 
+- [SwiftUI](https://github.com/neyogiry/Pokedex-iOS/tree/main/Pokedex-SwiftUI). SwiftUI helps you build great-looking apps across all Apple platforms with the power of Swift.
 - [UIKit](https://github.com/neyogiry/Pokedex-iOS/tree/main/Pokedex-UIKit). The UIKit framework provides the required infrastructure for your iOS or tvOS apps. 
 
 ### Status: 🚧 In progress
