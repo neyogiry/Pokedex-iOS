@@ -12,9 +12,9 @@
 Pokedex is still in under development, and some features are not yet implemented.
 
 ## Requirements
-Xcode: 13.4.1 <br>
-iOS Deployment Target: 14.5 <br>
-Swift: 5
+Xcode: 13.4.1+ <br>
+iOS Deployment Target: 14.5+ <br>
+Swift: 5+
   
 ## Tech stack & Dependencies
 Alamofire: 5.4.4 <br>
