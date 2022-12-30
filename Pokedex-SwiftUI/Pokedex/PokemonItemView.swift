@@ -17,7 +17,11 @@ struct PokemonItemView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: pokemon.url))
+            AsyncImage(url: URL(string: pokemon.url)) { image in
+                image
+            } placeholder: {
+                ProgressView()
+            }
             Text(pokemon.name)
         }
     }
