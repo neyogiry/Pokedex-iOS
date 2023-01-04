@@ -24,6 +24,11 @@ struct PokemonItemView: View {
             }
             Text(pokemon.name)
         }
+        .padding(.all, 16)
+        .overlay(
+            RoundedRectangle(cornerRadius: 40)
+                .stroke(.gray, lineWidth: 1)
+        )
     }
 }
 
