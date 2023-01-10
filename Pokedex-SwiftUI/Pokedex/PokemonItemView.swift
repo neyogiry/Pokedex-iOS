@@ -19,6 +19,9 @@ struct PokemonItemView: View {
         VStack {
             AsyncImage(url: URL(string: pokemon.url)) { image in
                 image
+                    .resizable()
+                    .scaledToFit()
+                
             } placeholder: {
                 ProgressView()
             }
