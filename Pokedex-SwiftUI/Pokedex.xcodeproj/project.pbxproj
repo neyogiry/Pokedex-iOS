@@ -13,6 +13,7 @@
 		1EC45E2C281C557D0094A9CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EC45E2B281C557D0094A9CD /* Preview Assets.xcassets */; };
 		E49746C429481CA300197A33 /* PokemonItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49746C329481CA300197A33 /* PokemonItemView.swift */; };
 		E49746C629481E6200197A33 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49746C529481E6200197A33 /* Pokemon.swift */; };
+		E49746C829496C5100197A33 /* PokemonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49746C729496C5100197A33 /* PokemonListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		1EC45E2B281C557D0094A9CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E49746C329481CA300197A33 /* PokemonItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonItemView.swift; sourceTree = "<group>"; };
 		E49746C529481E6200197A33 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		E49746C729496C5100197A33 /* PokemonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				1EC45E28281C557D0094A9CD /* Assets.xcassets */,
 				1EC45E2A281C557D0094A9CD /* Preview Content */,
 				E49746C529481E6200197A33 /* Pokemon.swift */,
+				E49746C729496C5100197A33 /* PokemonListView.swift */,
 			);
 			path = Pokedex;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E49746C829496C5100197A33 /* PokemonListView.swift in Sources */,
 				1EC45E27281C557C0094A9CD /* ContentView.swift in Sources */,
 				E49746C629481E6200197A33 /* Pokemon.swift in Sources */,
 				E49746C429481CA300197A33 /* PokemonItemView.swift in Sources */,
