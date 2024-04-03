@@ -9,30 +9,29 @@ import SwiftUI
 
 struct PokemonListView: View {
     
-    let list: [Pokemon]
-    
-    init(list: [Pokemon]) {
-        self.list = list
-    }
+    @State private var pokedex: [Pokemon] = []
+    private let presenter = PokedexPresenter()
     
     var body: some View {
         let columns = [GridItem(), GridItem()]
         LazyVGrid(columns: columns) {
-            ForEach(list) { pokemon in
+            ForEach(pokedex, id: \.name) { pokemon in
                 PokemonItemView(pokemon: pokemon)
             }
+        }
+        .task {
+            do {
+                pokedex = try await presenter.fetchPokedex().results
+            } catch {
+                print(error)
+            }
+            
         }
     }
 }
 
 struct PokemonListView_Previews: PreviewProvider {
     static var previews: some View {
-        let list = [
-            Pokemon(name: "Bulbasaur", url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"),
-            Pokemon(name: "Ivysaur", url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"),
-            Pokemon(name: "Venusaur", url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/3.png"),
-            Pokemon(name: "Charmander", url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png")
-        ]
-        PokemonListView(list: list)
+        PokemonListView()
     }
 }
