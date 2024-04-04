@@ -68,13 +68,12 @@
 				E4E5B1462B3E6BD500A34107 /* Data */,
 				E4E5B1412B3E532D00A34107 /* Domain */,
 				E4E5B13E2B3E52D500A34107 /* Presenter */,
+				E45AEC862BBE580C00D4FF6C /* View */,
 				E409CA642BBC9481002D0CA9 /* Util */,
 				1EC45E24281C557C0094A9CD /* PokedexApp.swift */,
 				1EC45E26281C557C0094A9CD /* ContentView.swift */,
-				E49746C329481CA300197A33 /* PokemonItemView.swift */,
 				1EC45E28281C557D0094A9CD /* Assets.xcassets */,
 				1EC45E2A281C557D0094A9CD /* Preview Content */,
-				E49746C729496C5100197A33 /* PokemonListView.swift */,
 			);
 			path = Pokedex;
 			sourceTree = "<group>";
@@ -92,6 +91,15 @@
 			children = (
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		E45AEC862BBE580C00D4FF6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E49746C729496C5100197A33 /* PokemonListView.swift */,
+				E49746C329481CA300197A33 /* PokemonItemView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E4E5B13E2B3E52D500A34107 /* Presenter */ = {

@@ -33,6 +33,7 @@ struct PokemonItemView: View {
                 .stroke(.gray, lineWidth: 1)
         )
     }
+    
 }
 
 struct PokemonItemView_Previews: PreviewProvider {
