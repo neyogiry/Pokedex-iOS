@@ -17,7 +17,7 @@ struct PokemonItemView: View {
     
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: pokemon.url)) { image in
+            AsyncImage(url: URL(string: imageURL(pokemon.url))) { image in
                 image
                     .resizable()
                     .scaledToFit()
@@ -34,13 +34,22 @@ struct PokemonItemView: View {
         )
     }
     
+    private func imageURL(_ url: String) -> String {
+        let baseImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/%@.png"
+        let array = url.components(separatedBy: "/")
+        print(array)
+        let id = array[array.count-2]
+        print(id)
+        return String(format: baseImageUrl, arguments: [id])
+    }
+    
 }
 
 struct PokemonItemView_Previews: PreviewProvider {
     static var previews: some View {
         let pokemon = Pokemon(
             name: "Bulbasaur",
-            url: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+            url: "https://pokeapi.co/api/v2/pokemon/1/"
         )
         PokemonItemView(pokemon: pokemon)
     }
