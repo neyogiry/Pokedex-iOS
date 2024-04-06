@@ -9,19 +9,18 @@ import SwiftUI
 
 struct PokemonListView: View {
     
-    @State private var pokedex: [Pokemon] = []
-    private let presenter = PokedexPresenter()
+    @StateObject private var viewModel = PokemonListViewModel()
     
     var body: some View {
         let columns = [GridItem(), GridItem()]
         LazyVGrid(columns: columns) {
-            ForEach(pokedex, id: \.name) { pokemon in
+            ForEach(viewModel.pokedex, id: \.name) { pokemon in
                 PokemonItemView(pokemon: pokemon)
             }
         }
         .task {
             do {
-                pokedex = try await presenter.fetchPokedex().results
+                try await viewModel.fetchPokedex()
             } catch {
                 print(error)
             }
