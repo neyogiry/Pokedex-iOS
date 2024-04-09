@@ -2,7 +2,7 @@
 //  PokemonRepository.swift
 //  Pokedex
 //
-//  Created by Fernando Irigoyen on 28/12/23.
+//  Created by neyogiry on 28/12/23.
 //
 
 import Foundation

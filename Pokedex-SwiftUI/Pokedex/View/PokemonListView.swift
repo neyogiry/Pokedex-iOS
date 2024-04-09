@@ -11,20 +11,23 @@ struct PokemonListView: View {
     
     @StateObject private var viewModel = PokemonListViewModel()
     
+    let columns = [GridItem(), GridItem()]
+    
     var body: some View {
-        let columns = [GridItem(), GridItem()]
-        LazyVGrid(columns: columns) {
-            ForEach(viewModel.pokedex, id: \.name) { pokemon in
-                PokemonItemView(pokemon: pokemon)
+        ScrollView {
+            LazyVGrid(columns: columns) {
+                ForEach(viewModel.pokedex, id: \.name) { pokemon in
+                    PokemonItemView(pokemon: pokemon)
+                }
             }
-        }
-        .task {
-            do {
-                try await viewModel.fetchPokedex()
-            } catch {
-                print(error)
+            .task {
+                do {
+                    try await viewModel.fetchPokedex()
+                } catch {
+                    print(error)
+                }
+                
             }
-            
         }
     }
 }
