@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PokemonRepository: PokemonDataSource {
+struct PokemonRepository: PokemonDataSource {
     
     static let shared = PokemonRepository()
     

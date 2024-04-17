@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Pokedex : Decodable {
+struct Pokedex : Codable {
     let results: [Pokemon]
 }

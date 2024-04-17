@@ -7,13 +7,16 @@
 
 import Foundation
 
-final class PokemonListViewModel : ObservableObject {
+@Observable
+final class PokemonListViewModel {
     
-    @Published var pokedex: [Pokemon] = []
+    private let repository: PokemonRepository = PokemonRepository.shared
+    
+    var pokedex: [Pokemon] = []
     
     func fetchPokedex() async throws {
         do {
-            pokedex = try await PokemonRepository.shared.all().results
+            pokedex = try await repository.all().results
         } catch {
             print(error)
         }
