@@ -20,6 +20,7 @@ struct PokemonListView: View {
                     PokemonItemView(pokemon: pokemon)
                 }
             }
+            .padding(10)
             .task {
                 do {
                     try await viewModel.fetchPokedex()
