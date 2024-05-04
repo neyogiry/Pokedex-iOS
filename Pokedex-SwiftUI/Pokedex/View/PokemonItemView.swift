@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PokemonItemView: View {
     
-    let pokemon: Pokemon
+    private let pokemon: Pokemon
     
     init(pokemon: Pokemon) {
         self.pokemon = pokemon
